@@ -1,0 +1,124 @@
+:root{
+  --bg:#0d1020;
+  --panel:#17182c;
+  --panel2:#212345;
+  --line:#343650;
+  --accent:#6657e8;
+  --accent2:#34e0c0;
+  --text:#e7e9ff;
+  --muted:#8d91b5;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0}
+body{font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;overflow:hidden}
+
+/* header */
+.appbar{min-height:60px;background:var(--panel);border-bottom:2px solid var(--accent);display:flex;align-items:center;gap:8px;padding:6px 10px 6px 12px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0}
+.brand h1{margin:0;font-size:15px;letter-spacing:.8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .sub{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appbar .title{flex:1;font-size:18px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ib{width:40px;height:40px;border:1px solid var(--line);background:var(--panel2);border-radius:10px;display:grid;place-items:center;cursor:pointer;color:var(--text);padding:0;flex-shrink:0;text-decoration:none}
+.ib:active{background:var(--accent)}
+.ib svg{width:22px;height:22px;fill:currentColor}
+.ib.link{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent}
+.spacer{flex:1}
+
+/* tabs */
+.tabs{height:46px;background:var(--bg);display:flex;gap:8px;padding:8px 10px;overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;height:30px;padding:0 16px;display:flex;align-items:center;border-radius:999px;background:var(--panel2);border:1px solid var(--line);color:var(--muted);font-size:14px;cursor:pointer;white-space:nowrap}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* editor */
+#editorView{flex:1;display:flex;flex-direction:column;min-height:0;position:relative}
+.editor{flex:1;display:flex;min-height:0;background:#0a0c1a;border-top:1px solid var(--line);overflow:hidden}
+#numbers{width:44px;padding:10px 8px 10px 0;text-align:right;color:#5d6288;background:#11132a;font:15px/1.6 "Roboto Mono",ui-monospace,monospace;white-space:pre;overflow:hidden;border-right:1px solid var(--line);flex-shrink:0;user-select:none}
+.codewrap{flex:1;position:relative;min-width:0}
+#hl,#code{position:absolute;inset:0;width:100%;height:100%;margin:0;border:0;padding:10px;font:15px/1.6 "Roboto Mono",ui-monospace,monospace;letter-spacing:0;white-space:pre;tab-size:4;font-variant-ligatures:none}
+#hl{color:var(--text);overflow:hidden;pointer-events:none}
+#code{outline:0;resize:none;background:transparent;color:transparent;-webkit-text-fill-color:transparent;caret-color:var(--accent2);overflow:auto}
+#code::selection{background:rgba(52,224,192,.3)}
+#hl .k{color:#4aa3ff}
+#hl .b{color:#ffa31a}
+#hl .s{color:#ff5c33}
+#hl .c{color:#6f9a6a}
+#hl .n{color:#b5e08c}
+#hl .f{color:#f3d97a}
+
+/* run button */
+.fab{position:absolute;right:16px;bottom:74px;height:52px;padding:0 22px 0 16px;border-radius:26px;background:linear-gradient(135deg,var(--accent),#8d5cf0);border:0;display:flex;align-items:center;gap:6px;color:#fff;font-size:16px;font-weight:700;letter-spacing:.4px;box-shadow:0 6px 18px rgba(102,87,232,.5);cursor:pointer}
+.fab svg{width:26px;height:26px;fill:#fff}
+.fab:active{filter:brightness(.9)}
+
+/* extra keys */
+.keys{height:56px;background:var(--panel);border-top:1px solid var(--line);display:flex;align-items:center;gap:6px;padding:0 8px;overflow-x:auto;flex-shrink:0;scrollbar-width:none}
+.keys::-webkit-scrollbar{display:none}
+.keys button{flex:0 0 auto;min-width:46px;height:38px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;color:var(--text);font-size:16px;padding:0 14px;cursor:pointer}
+.keys button:first-child{color:var(--accent2);font-size:14px;font-weight:600}
+.keys button:active{background:var(--accent)}
+
+/* menu */
+.menu{position:fixed;top:66px;right:8px;width:260px;max-width:92vw;background:var(--panel2);border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.6);z-index:50;display:none;padding:6px 0}
+.menu.show{display:block}
+.menu div{display:flex;align-items:center;gap:14px;height:48px;padding:0 16px;font-size:16px;cursor:pointer}
+.menu div:active{background:var(--accent)}
+.menu svg{width:22px;height:22px;fill:var(--accent2);flex-shrink:0}
+.scrim{position:fixed;inset:0;z-index:40;display:none}
+.scrim.show{display:block}
+
+/* dialogs */
+.dlg{position:fixed;inset:0;background:rgba(5,6,16,.75);display:none;place-items:center;z-index:80}
+.dlg.show{display:grid}
+.dlg .box{background:var(--panel);border:1px solid var(--line);width:90%;max-width:440px;max-height:85vh;overflow:auto;border-radius:16px;padding:8px 0 12px}
+.dlg h3{margin:10px 18px;font-size:18px;font-weight:600}
+.dlg .it{padding:14px 18px;font-size:16px;cursor:pointer}
+.dlg .it:active{background:var(--accent)}
+.dlg .msg{margin:4px 18px 10px;color:var(--muted);font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.dlg .lbl{margin:8px 18px 4px;font-size:13px;color:var(--muted)}
+.fld{display:block;width:calc(100% - 36px);margin:0 18px;background:#0a0c1a;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;font-size:16px;outline:0}
+.fld:focus{border-color:var(--accent)}
+.fld.area{height:210px;resize:vertical;font:14px/1.5 "Roboto Mono",ui-monospace,monospace;white-space:pre}
+.dlg .err{margin:8px 18px 0;color:#ff6b6b;font-size:14px}
+.dlg .row{display:flex;justify-content:flex-end;gap:8px;margin:12px 14px 0}
+.dlg .row button{background:transparent;border:0;color:var(--accent2);font-size:15px;font-weight:600;padding:10px 16px;border-radius:10px;cursor:pointer}
+.dlg .row button:active{background:var(--panel2)}
+.dlg .row button.danger{color:#ff6b6b}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:120px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:10px 18px;border-radius:20px;font-size:14px;z-index:90;opacity:0;pointer-events:none;transition:opacity .25s;max-width:86vw;text-align:center}
+#toast.show{opacity:1}
+
+/* files screen */
+#filesView{position:fixed;inset:0;background:var(--bg);display:none;flex-direction:column;z-index:35}
+#filesView.show{display:flex}
+.fbar{display:flex;gap:8px;padding:10px 12px;background:var(--panel);flex-shrink:0}
+.pill{flex:1;background:linear-gradient(135deg,var(--accent),#8d5cf0);color:#fff;border:0;border-radius:12px;height:42px;font-size:15px;font-weight:600;cursor:pointer}
+.pill.alt{background:var(--panel2);border:1px solid var(--line);color:var(--text)}
+.pill:active{filter:brightness(.88)}
+#flist{flex:1;overflow:auto;padding:8px 10px}
+.frow{display:flex;align-items:center;gap:6px;padding:6px 8px 6px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.finfo{flex:1;min-width:0;padding:6px 0;cursor:pointer}
+.fname{font-size:16px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fmeta{font-size:12px;color:var(--muted);margin-top:2px}
+.frow .ib{width:36px;height:36px}
+.frow .ib svg{width:20px;height:20px}
+.frow .ib.del{color:#ff6b6b}
+.fempty{padding:30px 22px;color:var(--muted);line-height:1.6;text-align:center}
+
+/* output screen */
+#termView{position:fixed;inset:0;background:#080a14;display:none;flex-direction:column;z-index:30}
+#termView.show{display:flex}
+#term{flex:1;padding:12px;font:14px/1.5 "Roboto Mono",ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;color:var(--text)}
+.cursor{display:inline-block;width:10px;height:18px;background:var(--accent2);vertical-align:text-bottom}
+.tabbtn{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:0 16px;height:38px;font-size:14px;font-weight:600;cursor:pointer}
+.tabbtn:active{filter:brightness(.88)}
+.outtitle{font-size:16px;font-weight:600;margin-left:6px}
+
+@media (max-width:380px){
+  .brand h1{font-size:13px}
+  .appbar{gap:5px;padding:6px 6px 6px 10px}
+  .ib{width:36px;height:36px}
+  .ib svg{width:19px;height:19px}
+         }
